@@ -9,7 +9,7 @@ Game::Game()
 
 void Game::run()
 {
-	RenderWindow window{ VideoMode{ 800, 800 }, "Packman++" };
+	RenderWindow window{ VideoMode{ 800, 600 }, "Packman++" };
 	window.setFramerateLimit(60);
 
 	Event event;
