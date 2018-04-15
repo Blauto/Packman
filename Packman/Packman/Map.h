@@ -8,7 +8,7 @@ class Map :public sf::Drawable
 public:
 	Map();
 	~Map() = default;
-	bool check(Sprite* object);
+	friend bool check(Map* map, Guardian* object);
 private:
 	const int mapSizeX{ 64 };
 	const int mapSizeY{ 48 };
@@ -17,4 +17,3 @@ private:
 	Texture wallTexture, emptyTexture;
 	void draw(RenderTarget& target, RenderStates state) const override;
 };
-

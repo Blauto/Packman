@@ -13,7 +13,7 @@ void Game::run()
 	window.setFramerateLimit(60);
 
 	Event event;
-	Packman player(550, 350);
+	Packman player(150, 150);
 	Map map;
 	while (true)
 	{
@@ -25,7 +25,7 @@ void Game::run()
 			break;
 		}
 
-		player.update(&map);
+		player.update();
 
 		window.draw(map);
 		window.draw(player);
