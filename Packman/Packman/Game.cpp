@@ -9,11 +9,11 @@ Game::Game()
 
 void Game::run()
 {
-	RenderWindow window{ VideoMode{ 800, 600 }, "Packman++" };
+	RenderWindow window{ VideoMode{ 768, 576 }, "Packman++" };
 	window.setFramerateLimit(60);
 
 	Event event;
-	Packman player(50, 50);
+	Packman player(550, 350);
 	Map map;
 	while (true)
 	{
@@ -25,7 +25,7 @@ void Game::run()
 			break;
 		}
 
-		player.update();
+		player.update(&map);
 
 		window.draw(map);
 		window.draw(player);

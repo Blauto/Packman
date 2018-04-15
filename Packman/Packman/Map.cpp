@@ -2,6 +2,7 @@
 #include "Map.h"
 #include <fstream>
 #include <iostream>
+#include <math.h>
 
 using namespace sf;
 using namespace std;
@@ -35,6 +36,31 @@ Map::Map()
 		file.close();
 	}
 	
+}
+
+bool Map::check(Sprite* object)
+{
+	const Vector2f origin = object->getOrigin();
+	object->setOrigin(0, 0);
+	const Vector2f position = object->getPosition();
+	object->setOrigin(origin);
+
+	IntRect area = object->getTextureRect();
+	Vector2i leftTopVector { (int)floor(position.x / squerSize), (int)floor(position.y / squerSize) };
+	Vector2i leftBottomVector{ (int)floor(position.x / squerSize), (int)floor(position.y + 24 / squerSize) };
+	Vector2i rightTopVector{ (int)floor(position.x + 24 / squerSize), (int)floor(position.y / squerSize) };
+	Vector2i rightBottomVector{ (int)floor(position.x + 24 / squerSize), (int)floor(position.y + 24 / squerSize) };
+	
+	bool permision = true;
+	if (wallMap[leftTopVector.y][leftTopVector.x] == 1) 
+		permision = false;
+	else if (wallMap[leftBottomVector.y][leftBottomVector.x] == 1)
+		permision = false;
+	else if (wallMap[rightTopVector.y][rightTopVector.x] == 1)
+		permision = false;
+	else if (wallMap[rightBottomVector.y][rightBottomVector.x] == 1)
+		permision = false;
+	return permision;
 }
 
 void Map::draw(RenderTarget & target, RenderStates state) const

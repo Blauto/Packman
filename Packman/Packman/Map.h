@@ -8,12 +8,12 @@ class Map :public sf::Drawable
 public:
 	Map();
 	~Map() = default;
-	bool check();
+	bool check(Sprite* object);
 private:
-	const int mapSizeX{ 32 };
-	const int mapSizeY{ 24 };
-	const int squerSize{ 25 };
-	int wallMap[24][32];
+	const int mapSizeX{ 64 };
+	const int mapSizeY{ 48 };
+	const int squerSize{ 12 };
+	int wallMap[48][64];
 	Texture wallTexture, emptyTexture;
 	void draw(RenderTarget& target, RenderStates state) const override;
 };
