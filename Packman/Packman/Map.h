@@ -8,7 +8,7 @@ class Map :public sf::Drawable
 public:
 	Map();
 	~Map() = default;
-	friend bool check(Map* map, Guardian* object);
+	friend class Guardian;
 private:
 	const int mapSizeX{ 64 };
 	const int mapSizeY{ 48 };

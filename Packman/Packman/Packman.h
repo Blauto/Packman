@@ -5,20 +5,15 @@
 
 using namespace sf;
 
-class Packman :public sf::Drawable, public virtual Guardian
+class Packman :public sf::Drawable, protected virtual Guardian
 {
 public:
-	Packman(float x, float y);
+	Packman(float x, float y, Map *map);
 	Packman() = delete;
 	~Packman() = default;
-	const int width{ 24 };
-	const int height{ 24 };
 	void update();
-	void getObject();
 private:
-	Sprite object;
-	Texture texture;
-	const float velocity{ 16.0f };
+	const float velocity{ 2.0f };
 	Vector2f velocityVectorLeft{ -velocity , 0 };
 	Vector2f velocityVectorRight{ velocity , 0 };
 	Vector2f velocityVectorTop{ 0 , -velocity };

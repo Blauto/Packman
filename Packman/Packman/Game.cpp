@@ -13,8 +13,9 @@ void Game::run()
 	window.setFramerateLimit(60);
 
 	Event event;
-	Packman player(150, 150);
 	Map map;
+	Packman player(150, 150, &map);
+	
 	while (true)
 	{
 		window.clear(Color::Black);

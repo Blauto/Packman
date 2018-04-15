@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include "Map.h"
 
 using namespace sf;
 
@@ -8,9 +9,12 @@ class Guardian
 public:
 	Guardian();
 	~Guardian() = default;
-private:
+	bool checkCollision(Vector2f vecor);
+protected:
 	int width;
 	int height;
 	Sprite object;
+	Map* map;
+	Texture texture;
 };
 

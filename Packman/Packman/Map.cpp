@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Map.h"
 #include <fstream>
-#include <iostream>
 #include <math.h>
 
 using namespace sf;
@@ -60,33 +59,4 @@ void Map::draw(RenderTarget & target, RenderStates state) const
 			target.draw(field, state);
 		}
 	}
-}
-
-bool check(Map* map, Guardian* object)
-{
-
-	/*const Vector2f origin = object->getOrigin();
-	object->setOrigin(0, 0);
-	const Vector2f position = object->getPosition();
-	object->setOrigin(origin);
-
-	Vector2i leftTopVector{ (int)floor(position.x / squerSize), (int)floor(position.y / squerSize) };
-	Vector2i leftBottomVector{ (int)floor(position.x / squerSize), (int)floor((position.y + 24) / squerSize) };
-	Vector2i rightTopVector{ (int)floor((position.x + 24) / squerSize), (int)floor(position.y / squerSize) };
-	Vector2i rightBottomVector{ (int)floor((position.x + 24) / squerSize), (int)floor((position.y + 24) / squerSize) };
-
-	bool permision = true;
-	if (map->wallMap[leftTopVector.y][leftTopVector.x] == 1)
-		permision = false;
-	else if (map->wallMap[leftBottomVector.y][leftBottomVector.x] == 1)
-		permision = false;
-	else if (map->wallMap[rightTopVector.y][rightTopVector.x] == 1)
-		permision = false;
-	else if (map->wallMap[rightBottomVector.y][rightBottomVector.x] == 1)
-		permision = false;
-	if (permision == false) {
-		cout << "xd";
-	}
-	return permision;*/
-	return false;
 }
