@@ -11,7 +11,6 @@ public:
 private:
 	int width;
 	int height;
-	Sprite fff;
-	virtual void getObject() = 0;
+	Sprite object;
 };
 
