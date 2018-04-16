@@ -17,15 +17,15 @@ bool Guardian::checkCollision(Vector2f vector)
 	Vector2f bottom = top;
 	Vector2f left = top;
 	Vector2f right = top;
-	top.y += width / 2;
-	bottom.y -= width / 2;
-	left.x += width / 2;
-	right.x -= width / 2;
+	top.y -= width / 2;
+	bottom.y += width / 2;
+	left.x -= width / 2;
+	right.x += width / 2;
 
 
 
 
-	cout << "x:" << top.x << "     y:" << top.y << endl;
+	cout << "x:" << left.x << "     y:" << left.y << endl;
 
 	bool permision = true;
 	if (map->wallMap[(int)floor(top.y/map->squerSize)][(int)floor(top.x / map->squerSize)] == 1)
@@ -37,8 +37,8 @@ bool Guardian::checkCollision(Vector2f vector)
 	else if (map->wallMap[(int)floor(right.y / map->squerSize)][(int)floor(right.x / map->squerSize)] == 1)
 		permision = false;
 
-	if(!permision) 
-		object.move(-vector);
+
+	object.move(-vector);
 	return permision;
 }
 
