@@ -17,13 +17,30 @@ bool Guardian::checkCollision(Vector2f vector)
 	Vector2f bottom = top;
 	Vector2f left = top;
 	Vector2f right = top;
+
+	Vector2f topLeft = top;
+	Vector2f bottomLeft = top;
+	Vector2f topRight = top;
+	Vector2f bottomRight = top;
+
+
 	top.y -= width / 2;
 	bottom.y += width / 2;
 	left.x -= width / 2;
 	right.x += width / 2;
 
 
+	topLeft.y -= width / 2;
+	topLeft.x -= width / 2;
 
+	bottomRight.y += width / 2;
+	bottomRight.x += width / 2;
+
+	bottomLeft.x -= width / 2;
+	bottomLeft.y += width / 2;
+
+	topRight.x += width / 2;
+	topRight.y -= width / 2;
 
 	cout << "x:" << left.x << "     y:" << left.y << endl;
 
@@ -35,6 +52,15 @@ bool Guardian::checkCollision(Vector2f vector)
 	else if (map->wallMap[(int)floor(left.y / map->squerSize)][(int)floor(left.x / map->squerSize)] == 1)
 		permision = false;
 	else if (map->wallMap[(int)floor(right.y / map->squerSize)][(int)floor(right.x / map->squerSize)] == 1)
+		permision = false;
+
+	else if (map->wallMap[(int)floor(topLeft.y / map->squerSize)][(int)floor(topLeft.x / map->squerSize)] == 1)
+		permision = false;
+	else if (map->wallMap[(int)floor(bottomRight.y / map->squerSize)][(int)floor(bottomRight.x / map->squerSize)] == 1)
+		permision = false;
+	else if (map->wallMap[(int)floor(bottomLeft.y / map->squerSize)][(int)floor(bottomLeft.x / map->squerSize)] == 1)
+		permision = false;
+	else if (map->wallMap[(int)floor(topRight.y / map->squerSize)][(int)floor(topRight.x / map->squerSize)] == 1)
 		permision = false;
 
 
