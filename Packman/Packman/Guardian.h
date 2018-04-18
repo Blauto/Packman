@@ -9,7 +9,7 @@ class Guardian
 public:
 	Guardian();
 	~Guardian() = default;
-	bool checkCollision(Vector2f vecor);
+	bool checkCollision(Vector2f vector);
 protected:
 	int width;
 	int height;

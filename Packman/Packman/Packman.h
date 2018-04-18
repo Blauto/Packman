@@ -13,7 +13,7 @@ public:
 	~Packman() = default;
 	void update();
 private:
-	const float velocity{ 3.5f };
+	const float velocity{ 2.5f };
 	Vector2f velocityVectorLeft{ -velocity , 0 };
 	Vector2f velocityVectorRight{ velocity , 0 };
 	Vector2f velocityVectorTop{ 0 , -velocity };

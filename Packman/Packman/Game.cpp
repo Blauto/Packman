@@ -14,7 +14,7 @@ void Game::run()
 
 	Event event;
 	Map map;
-	Packman player(150, 150, &map);
+	Packman player(24, 24, &map);
 	
 	while (true)
 	{
