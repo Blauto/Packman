@@ -8,9 +8,15 @@ using namespace std;
 
 int main()
 {
+	
 	Game game;
+	Menu menu(&game);
 
-	game.run();
+	while (menu.display) {
+
+		menu.view(&menu);
+	}
+
 	return 0;
 }
 

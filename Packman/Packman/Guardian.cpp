@@ -29,7 +29,6 @@ bool Guardian::checkCollision(Vector2f vector)
 	left.x -= width / 2;
 	right.x += width / 2;
 
-
 	topLeft.y -= width / 2;
 	topLeft.x -= width / 2;
 
@@ -42,7 +41,9 @@ bool Guardian::checkCollision(Vector2f vector)
 	topRight.x += width / 2;
 	topRight.y -= width / 2;
 
-	cout << "x:" << topLeft.x << "     y:" << topLeft.y << endl;
+	checkPointCollision(topLeft, bottomLeft, topRight);
+
+	//cout << "x:" << topLeft.x << "     y:" << topLeft.y << endl;
 
 	bool permision = true;
 	if (map->wallMap[(int)floor(top.y/map->squerSize)][(int)floor(top.x / map->squerSize)] == 1)
@@ -65,6 +66,26 @@ bool Guardian::checkCollision(Vector2f vector)
 
 	object.move(-vector);
 	return permision;
+}
+
+void Guardian::checkPointCollision(Vector2f topLeft, Vector2f bottomLeft, Vector2f topRight)
+{
+	Vector2f pointPosition;
+	list<Point>::const_iterator it;
+
+	for (it = map->pointList.begin(); it != map->pointList.end(); ++it) //rysowanie punktów
+	{
+		pointPosition = it->object.getPosition();
+		if (pointPosition.x > topLeft.x
+			&& pointPosition.x < topRight.x
+			&& pointPosition.y > topLeft.y
+			&& pointPosition.y < bottomLeft.y) {
+
+			map->pointList.erase(it);
+			game->addPlayerPoint();
+			break;
+		}
+	}
 }
 
 

@@ -156,6 +156,10 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Guardian.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuOption.h" />
+    <ClInclude Include="OptionExit.h" />
+    <ClInclude Include="OptionPlay.h" />
     <ClInclude Include="Packman.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="stdafx.h" />
@@ -166,6 +170,10 @@
     <ClCompile Include="Guardian.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuOption.cpp" />
+    <ClCompile Include="OptionExit.cpp" />
+    <ClCompile Include="OptionPlay.cpp" />
     <ClCompile Include="Packman.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="stdafx.cpp">

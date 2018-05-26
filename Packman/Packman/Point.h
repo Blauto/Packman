@@ -9,6 +9,7 @@ public:
 	Point(float x, float y);
 	~Point() = default;
 	friend class Map;
+	friend class Guardian;
 private:
 	CircleShape object;
 	float radius{ 6 };
