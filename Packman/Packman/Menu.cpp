@@ -85,7 +85,4 @@ void Menu::view(Menu *m)
 		display = false;
 }
 
-void Menu::draw(RenderTarget & target, RenderStates state) const
-{
-}
 

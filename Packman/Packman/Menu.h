@@ -4,7 +4,7 @@
 
 using namespace sf;
 
-class Menu :public sf::Drawable
+class Menu 
 {
 public:
 	Menu(Game* g);
@@ -18,6 +18,5 @@ public:
 	int musicVolume{ 1717986918 };
 	String musicName{ "Pac-Man - Intro Theme [Remix]" };
 	int musicTt{ 1 };
-	void draw(RenderTarget& target, RenderStates state) const override;
 };
 
