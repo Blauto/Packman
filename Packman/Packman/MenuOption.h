@@ -12,11 +12,18 @@ public:
 	friend bool detect(MenuOption* menuOption);
 	bool detection{ false };
 protected:
-	int width{ 200 };
+	int width{ 250 };
 	int height{ 50 };
-	Color background{ 16, 168, 124 };
-	Color outlineColor{ 2, 22, 16 };
-	int outlineThickness{ 1 };
+	Color background{ 255, 131, 4 };
+	Color unHoverBackground{ 255, 131, 4 };
+	Color hoverBackground{ 255, 150, 4 };
+	Color outlineColor{ 255, 21, 31 };
+	const Color textColor{ 255, 204 ,0 };
+	Color textOutlineColor{ 0, 0, 0};
+	int textThickness{ 1 };
+	int outlineThickness{ 3 };
+	int charakterSize{ 20 };
+	int lineHeight{ 0 };
 	string name;
 	int xPosition{ 384 }; //center, witch origin for x and y
 	int yPosition; 

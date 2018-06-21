@@ -5,10 +5,6 @@
 using namespace sf;
 using namespace std;
 
-Guardian::Guardian()
-{
-}
-
 bool Guardian::checkCollision(Vector2f vector)
 {
 	object.move(vector);
@@ -41,9 +37,13 @@ bool Guardian::checkCollision(Vector2f vector)
 	topRight.x += width / 2;
 	topRight.y -= width / 2;
 
-	checkPointCollision(topLeft, bottomLeft, topRight);
+	if (this->name == "Packman") {
 
-	//cout << "x:" << topLeft.x << "     y:" << topLeft.y << endl;
+		checkPointCollision(topLeft, bottomLeft, topRight);
+		checkBonusCollision(topLeft, bottomLeft, topRight);
+	}
+
+	
 
 	bool permision = true;
 	if (map->wallMap[(int)floor(top.y/map->squerSize)][(int)floor(top.x / map->squerSize)] == 1)
@@ -82,10 +82,36 @@ void Guardian::checkPointCollision(Vector2f topLeft, Vector2f bottomLeft, Vector
 			&& pointPosition.y < bottomLeft.y) {
 
 			map->pointList.erase(it);
-			game->addPlayerPoint();
+			game->addPlayerPoint(1);
+
+			if (map->pointList.empty()) {
+				map->loadMap();
+				game->ghostReset = true;
+			}
+				
 			break;
 		}
 	}
 }
 
+void Guardian::checkBonusCollision(Vector2f topLeft, Vector2f bottomLeft, Vector2f topRight)
+{
+	Vector2f bonusPosition;
+	list<Bonus* >::const_iterator it;
+	Bonus* bonWsk;
+	for (it = map->bonusList.begin(); it != map->bonusList.end(); ++it) //rysowanie punktów
+	{
+		bonWsk = *it;
+		bonusPosition = bonWsk->object.getPosition();
+		if (bonusPosition.x > topLeft.x
+			&& bonusPosition.x < topRight.x
+			&& bonusPosition.y > topLeft.y
+			&& bonusPosition.y < bottomLeft.y) {
+
+			map->bonusList.erase(it);
+			bonWsk->action();
+			break;
+		}
+	}
+}
 

@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "OptionExit.h"
 
-bool exitMessegBox();
+bool exitMessegBox(string messeg = "");
 
 OptionExit::OptionExit(Menu *m, Game* g, RenderWindow* w)
 {
 	name = "Exit";
-	yPosition = 400;
+	yPosition = 410;
 	game = g;
 	menu = m;
 	window = w;

@@ -14,6 +14,10 @@ public:
 	void view(Menu *m);
 	bool display{ true };
 	Color background{ 16, 74, 168 };
+	Sprite logo;
+	int musicVolume{ 1717986918 };
+	String musicName{ "Pac-Man - Intro Theme [Remix]" };
+	int musicTt{ 1 };
 	void draw(RenderTarget& target, RenderStates state) const override;
 };
 

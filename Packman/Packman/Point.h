@@ -12,7 +12,8 @@ public:
 	friend class Guardian;
 private:
 	CircleShape object;
-	float radius{ 6 };
+	float radius{ 2.5f };
+	float positionX, positionY;
 	Color color{ 230, 228, 228 };
 	void draw(RenderTarget& target, RenderStates state) const override;
 };

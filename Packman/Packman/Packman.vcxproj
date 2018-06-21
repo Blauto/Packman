@@ -153,27 +153,61 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bonus.h" />
+    <ClInclude Include="BonusAbilityEat.h" />
+    <ClInclude Include="BonusMultipler.h" />
+    <ClInclude Include="BonusSpeed.h" />
+    <ClInclude Include="FireBall.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Ghost.h" />
+    <ClInclude Include="GhostFireShooter.h" />
+    <ClInclude Include="GhostMineSpreader.h" />
     <ClInclude Include="Guardian.h" />
+    <ClInclude Include="ListRankRecord.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuOption.h" />
+    <ClInclude Include="Mine.h" />
+    <ClInclude Include="OptionBack.h" />
+    <ClInclude Include="OptionChangeMusic.h" />
     <ClInclude Include="OptionExit.h" />
+    <ClInclude Include="OptionMusic.h" />
     <ClInclude Include="OptionPlay.h" />
+    <ClInclude Include="OptionRank.h" />
+    <ClInclude Include="OptionSettings.h" />
+    <ClInclude Include="OptionVolumeDown.h" />
+    <ClInclude Include="OptionVolumeUpp.h" />
     <ClInclude Include="Packman.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bonus.cpp" />
+    <ClCompile Include="BonusAbilityEat.cpp" />
+    <ClCompile Include="BonusMultipler.cpp" />
+    <ClCompile Include="BonusSpeed.cpp" />
+    <ClCompile Include="FireBall.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="GhostFireShooter.cpp" />
+    <ClCompile Include="GhostMineSpreader.cpp" />
     <ClCompile Include="Guardian.cpp" />
+    <ClCompile Include="ListRankRecord.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuOption.cpp" />
+    <ClCompile Include="Mine.cpp" />
+    <ClCompile Include="OptionBack.cpp" />
+    <ClCompile Include="OptionChangeMusic.cpp" />
     <ClCompile Include="OptionExit.cpp" />
+    <ClCompile Include="OptionMusic.cpp" />
     <ClCompile Include="OptionPlay.cpp" />
+    <ClCompile Include="OptionRank.cpp" />
+    <ClCompile Include="OptionSettings.cpp" />
+    <ClCompile Include="OptionVolumeDown.cpp" />
+    <ClCompile Include="OptionVolumeUpp.cpp" />
     <ClCompile Include="Packman.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="stdafx.cpp">

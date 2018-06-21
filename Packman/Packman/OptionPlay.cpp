@@ -4,7 +4,7 @@
 OptionPlay::OptionPlay(Menu *m, Game* g, RenderWindow* w)
 {
 	name = "Play";
-	yPosition = 200;
+	yPosition = 230;
 	game = g;
 	menu = m;
 	window = w;

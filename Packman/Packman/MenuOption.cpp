@@ -13,10 +13,13 @@ void MenuOption::draw(RenderTarget & target, RenderStates state) const
 	font->loadFromFile("ObelixPro.ttf");
 
 	text->setString(name);
-	text->setCharacterSize(20);
+	text->setCharacterSize(charakterSize);
 	text->setFont(*font);
+	text->setFillColor(textColor);
+	text->setOutlineColor(textOutlineColor);
+	text->setOutlineThickness(textThickness);
 	float textWidth = text->getLocalBounds().width;
-	text->setPosition(xWitchOrigin + width/2 - textWidth/2, yWitchOrigin + height/3);
+	text->setPosition(xWitchOrigin + width/2 - textWidth/2, yWitchOrigin + height/3 + lineHeight);
 
 
 	rectangle->setSize(sf::Vector2f(width, height));
@@ -37,10 +40,9 @@ bool detect(MenuOption* menuOption)
 {
 	int xWitchOrigin = menuOption->xPosition - menuOption->width / 2;
 	int yWitchOrigin = menuOption->yPosition - menuOption->height / 2;
+	sf::Vector2i mousePos = sf::Mouse::getPosition(*menuOption->window);
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-
-		sf::Vector2i mousePos = sf::Mouse::getPosition(*menuOption->window);
 
 		if (xWitchOrigin < mousePos.x
 			&& xWitchOrigin + menuOption->width > mousePos.x
@@ -52,10 +54,22 @@ bool detect(MenuOption* menuOption)
 			return true;
 		}
 	}
+	if (xWitchOrigin < mousePos.x
+		&& xWitchOrigin + menuOption->width > mousePos.x
+		&& yWitchOrigin < mousePos.y
+		&& yWitchOrigin + menuOption->height > mousePos.y
+		) {
+
+		menuOption->background = menuOption->hoverBackground;
+	} else {
+
+		menuOption->background = menuOption->unHoverBackground;
+	}
+
 	return false;
 }
 
-bool exitMessegBox()
+bool exitMessegBox(string messeg)
 {
 	RenderWindow window{ VideoMode{ 360, 150 }, "Exit" };
 	window.setFramerateLimit(60);
@@ -65,6 +79,7 @@ bool exitMessegBox()
 	RectangleShape yes(sf::Vector2f(optionWidth, optionHeight)), no(sf::Vector2f(optionWidth, optionHeight));
 	Color fillColorButton(209, 209, 209);
 	Color fillColorBackgrount(227, 229, 229);
+	Color fillColorButtonHover(217, 219, 219);
 	Color outlineColor(40, 40, 40);
 
 	yes.setFillColor(fillColorButton);
@@ -83,37 +98,44 @@ bool exitMessegBox()
 	font.loadFromFile("Roboto-Medium.ttf");
 
 	Text text;
-	text.setFont(font);
-	text.setCharacterSize(17);
-	text.setFillColor(outlineColor);
+	Event event;
+	Vector2i mousePos;
 
-	window.clear(fillColorBackgrount);
-
-	window.draw(yes);
-	window.draw(no);
-
-	text.setString("Yes");
-	text.setPosition(sf::Vector2f(75, 104));
-	window.draw(text);
-
-	text.setString("No");
-	text.setPosition(sf::Vector2f(260, 104));
-	window.draw(text);
-
-	text.setString("Do you really want to exit?");
-	text.setPosition(sf::Vector2f(30, 40));
-	window.draw(text);
 	while (true) {
 
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+		window.pollEvent(event);
 
-			Vector2i mousePos = sf::Mouse::getPosition(window);
+		text.setFont(font);
+		text.setCharacterSize(17);
+		text.setFillColor(outlineColor);
+
+		window.clear(fillColorBackgrount);
+
+		window.draw(yes);
+		window.draw(no);
+
+		text.setString("Yes");
+		text.setPosition(sf::Vector2f(75, 104));
+		window.draw(text);
+
+		text.setString("No");
+		text.setPosition(sf::Vector2f(260, 104));
+		window.draw(text);
+
+		text.setString("Do you really want to exit?\n" + messeg);
+		text.setPosition(sf::Vector2f(30, 40));
+		window.draw(text);
+		
+		mousePos = sf::Mouse::getPosition(window);
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
 			if (yes.getPosition().x < mousePos.x
 				&& yes.getPosition().x + optionWidth > mousePos.x
 				&& yes.getPosition().y < mousePos.y
 				&& yes.getPosition().y + optionHeight > mousePos.y
 				) {
+
 				window.close();
 				return true;
 			}
@@ -123,10 +145,43 @@ bool exitMessegBox()
 				&& no.getPosition().y < mousePos.y
 				&& no.getPosition().y + optionHeight > mousePos.y
 				) {
+
 				window.close();
 				return false;
 			}
 		}
+
+		if (event.type == sf::Event::MouseMoved) {
+
+			if (yes.getPosition().x < mousePos.x
+				&& yes.getPosition().x + optionWidth > mousePos.x
+				&& yes.getPosition().y < mousePos.y
+				&& yes.getPosition().y + optionHeight > mousePos.y
+				) {
+
+				yes.setFillColor(fillColorButtonHover);
+			} else {
+				yes.setFillColor(fillColorButton);
+			}
+
+			if (no.getPosition().x < mousePos.x
+				&& no.getPosition().x + optionWidth > mousePos.x
+				&& no.getPosition().y < mousePos.y
+				&& no.getPosition().y + optionHeight > mousePos.y
+				) {
+
+				no.setFillColor(fillColorButtonHover);
+			} else {
+				no.setFillColor(fillColorButton);
+			}
+		}
+
+		if (event.type == Event::Closed) {
+
+			window.close();
+			return false;
+		}
+
 		window.display();
 	}
 }

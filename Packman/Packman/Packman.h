@@ -8,18 +8,23 @@ using namespace sf;
 class Packman :public sf::Drawable, protected virtual Guardian
 {
 public:
+	friend class Ghost;
+	friend class GhostMineSpreader;
+	friend class GhostFireShooter;
 	Packman(float x, float y, Map *mapa, Game *gra);
 	Packman() = delete;
 	~Packman() = default;
 	void update();
+	void updateVelocity();
 	void makeMove(int direction);
 	int lastMovment{ 1 };
+	sf::Vector2f pacmanPosition;
 private:
 	const float velocity{ 2.0f };
-	Vector2f velocityVectorLeft{ -velocity , 0 };
-	Vector2f velocityVectorRight{ velocity , 0 };
-	Vector2f velocityVectorTop{ 0 , -velocity };
-	Vector2f velocityVectorBottom{ 0 , velocity };
+	Vector2f velocityVectorLeft;
+	Vector2f velocityVectorRight;
+	Vector2f velocityVectorTop;
+	Vector2f velocityVectorBottom;
 	void draw(RenderTarget& target, RenderStates state) const override;
 };
 

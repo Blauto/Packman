@@ -8,9 +8,11 @@ using namespace std;
 
 int main()
 {
-	
+	PlaySound(TEXT("Pac-Man - Intro Theme [Remix].wav"), NULL, SND_ASYNC);
+
 	Game game;
 	Menu menu(&game);
+	waveOutSetVolume(0, menu.musicVolume);
 
 	while (menu.display) {
 
